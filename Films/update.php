@@ -19,8 +19,9 @@ if(isset($postdata) && !empty($postdata))
   $pseudo = mysqli_real_escape_string($con, trim($request->pseudo));
   $lien_film = mysqli_real_escape_string($con, $request->lien_film);
   $description = mysqli_real_escape_string($con, $request->description);
+  $id_categorie = mysqli_real_escape_string($con, $request->id_categorie);
   // Update.
-   $sql = "UPDATE `film` SET `Titre_film`='$titre_film',`Pseudo`='$pseudo',`Lien_film`='$lien_film',`Description`='$description' WHERE film.id = '$id'";
+   $sql = "UPDATE `film` SET `Titre_film`='$titre_film',`Pseudo`='$pseudo',`Lien_film`='$lien_film',`Description`='$description',`id_categorie`='$id_categorie' WHERE film.id = '$id'";
 
   if(mysqli_query($con, $sql))
   {

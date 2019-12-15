@@ -5,7 +5,7 @@ require '../connect.php';
 $id = $_GET['id']; 
 
   // Get by id.
-$sql = "SELECT * FROM `film` WHERE film.id ='$id' LIMIT 1";
+$sql = "SELECT film.*, categorie.* FROM `film` INNER JOIN categorie ON categorie.id=film.id_categorie WHERE film.id =$id LIMIT 1";
 
  if($result = mysqli_query($con,$sql))
 {
@@ -19,6 +19,7 @@ $sql = "SELECT * FROM `film` WHERE film.id ='$id' LIMIT 1";
     $films['lien_film'] = $row['Lien_film'];
     $films['description'] = $row['Description'];
     $films['Id_categorie'] = $row['id_categorie'];
+    
    // $cr++;
   
     
