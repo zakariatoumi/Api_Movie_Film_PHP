@@ -20,7 +20,7 @@ if(isset($postdata) && !empty($postdata))
   // var_dump($password);
 
 
-$sql = "INSERT INTO `film`(Titre_film, Lien_film, Pseudo, Description, id_user, id_categorie) VALUES ('$titreFilm','$pseudoFilm','$lienFilm','$descriptionFilm','1','$categorie')";
+$sql = "INSERT INTO `film`(Titre_film, Pseudo, Lien_film,  Description, id_user, id_categorie) VALUES ('$titreFilm','$pseudoFilm','$lienFilm','$descriptionFilm','1','$categorie')";
 //$sql = "SELECT * FROM `user` WHERE 1";
 // var_dump(mysqli_query($con,$sql));
 if(mysqli_query($con,$sql))
