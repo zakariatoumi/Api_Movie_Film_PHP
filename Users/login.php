@@ -8,6 +8,7 @@
 
  $postdata = file_get_contents("php://input");
 
+
 if(isset($postdata) && !empty($postdata))
 {
   $request = json_decode($postdata);
@@ -17,6 +18,7 @@ if(isset($postdata) && !empty($postdata))
   // Sanitize.
    $username = $request->username;
    $password = $request->password;
+   
   
   if($username=='Admin' && $password=='123456'){
 

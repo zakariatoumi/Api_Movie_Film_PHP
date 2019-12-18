@@ -1,7 +1,7 @@
 <?php
 require '../connect.php';
 error_reporting(E_ERROR);
-$users = [];
+$categories = [];
 $sql = "SELECT * FROM  categorie";
 
 if($result = mysqli_query($con,$sql))
