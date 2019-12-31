@@ -1,8 +1,8 @@
 <?php
-require '../connect.php';
+require '../../connect.php';
 error_reporting(E_ERROR);
 $films = [];
-$sql = "SELECT * FROM film";
+$sql = "SELECT film.*,categorie.* FROM `film` INNER JOIN categorie ON categorie.id=film.id_categorie WHERE film.valid=1 AND categorie.id=film.id_categorie";
 
 if($result = mysqli_query($con,$sql))
 {
@@ -16,6 +16,8 @@ if($result = mysqli_query($con,$sql))
     $films[$cr]['description'] = $row['Description'];
     $films[$cr]['Id_categorie'] = $row['id_categorie'];
     $films[$cr]['Valid'] = $row['valid'];
+    $films[$cr]['Id_categorie'] = $row['id'];
+    $films[$cr]['libelle'] = $row['Libelle'];
     $cr++;
   }
 

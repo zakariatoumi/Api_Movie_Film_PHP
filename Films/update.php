@@ -21,7 +21,19 @@ if(isset($postdata) && !empty($postdata))
   $description = mysqli_real_escape_string($con, $request->description);
   $id_categorie = mysqli_real_escape_string($con, $request->id_categorie);
   // Update.
-   $sql = "UPDATE `film` SET `Titre_film`='$titre_film',`Pseudo`='$pseudo',`Lien_film`='$lien_film',`Description`='$description',`id_categorie`='$id_categorie' WHERE film.id = '$id'";
+
+  $lienConst = "https://www.youtube.com/embed/";
+  $var = substr($lien_film, 0, 30);
+  if ($lienConst == $var) {
+    $lien = $lien_film;
+  } else {
+    $lienG=substr($lien_film, strpos($lien_film, "=") + 1);
+
+    $lien = $lienConst . $lienG;
+  }
+  
+
+   $sql = "UPDATE `film` SET `Titre_film`='$titre_film',`Pseudo`='$pseudo',`Lien_film`='$lien',`Description`='$description',`id_categorie`='$id_categorie' WHERE film.id = '$id'";
 
   if(mysqli_query($con, $sql))
   {

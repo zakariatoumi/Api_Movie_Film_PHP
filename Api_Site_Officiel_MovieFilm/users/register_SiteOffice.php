@@ -1,5 +1,5 @@
 <?php
-require '../connect.php';
+require '../../connect.php';
 
  $postdata = file_get_contents("php://input");
 
@@ -16,21 +16,24 @@ if(isset($postdata) && !empty($postdata))
   $email = mysqli_real_escape_string($con, $request->email);
   $password = mysqli_real_escape_string($con, $request->password);
   
+
   $token =  md5(session_id().microtime());
   $token = substr($token, -20);
 
-  
 
-$sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token')";
+  $select = mysqli_query($con, "SELECT * FROM user WHERE Email = '".$email."'");
+if(mysqli_num_rows($select)) {
+    exit('Cette adresse email est déjà utilisé');
+}else{
+    $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token')";
 
-if(mysqli_query($con,$sql))
-{
-  http_response_code(201);
+    if (mysqli_query($con, $sql)) {
+        http_response_code(201);
+    } else {
+        http_response_code(422);
+    }
 }
-else
-{
-  http_response_code(422);
-}
+
 }
 
 ?>

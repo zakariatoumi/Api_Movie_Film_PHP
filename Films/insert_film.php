@@ -19,8 +19,14 @@ if(isset($postdata) && !empty($postdata))
   
   // var_dump($password);
 
+  $lienConst = "https://www.youtube.com/embed/";
 
-$sql = "INSERT INTO `film`(Titre_film, Pseudo, Lien_film,  Description, id_user, id_categorie, valid) VALUES ('$titreFilm','$pseudoFilm','$lienFilm','$descriptionFilm','1','$categorie','1')";
+  $lienG=substr($lienFilm, strpos($lienFilm, "=") + 1);
+
+  $lien = $lienConst . $lienG;
+
+
+$sql = "INSERT INTO `film`(Titre_film, Pseudo, Lien_film,  Description, id_categorie, valid) VALUES ('$titreFilm','$pseudoFilm','$lien','$descriptionFilm','$categorie','1')";
 //$sql = "SELECT * FROM `user` WHERE 1";
 // var_dump(mysqli_query($con,$sql));
 if(mysqli_query($con,$sql))

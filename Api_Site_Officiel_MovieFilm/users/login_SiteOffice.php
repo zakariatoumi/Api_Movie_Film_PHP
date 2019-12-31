@@ -1,21 +1,6 @@
 <?php
-//require 'connect.php';
-  // $dateNow = date("Y/m/d");
-  // $moth =explode("/",$dateNow)['1'];
-  // switch ($moth) {
-  //   case '12':
-  //     $query = "INSERT INTO `user`(`dec`) VALUES (13);";
-  //     break;
-  //   case '1':
-  //     $query = "INSERT INTO `user`(`jan`) VALUES (13);";
-  //     break;
-    
-  //   default:
-  //     # code...
-  //     break;
-  // }
-  // echo $query;
-  // die();
+require '../../connect.php';
+
   $token = null;
   $headers = apache_request_headers();
   //print_r($headers);
@@ -31,11 +16,17 @@ if(isset($postdata) && !empty($postdata))
   //print_r($request);
   
   // Sanitize.
-   $username = $request->username;
-   $password = $request->password;
+  //  $username = $request->username;
+  //  $password = $request->password;
+
+  $username = mysqli_real_escape_string($con, trim($request->username));
+  $password = mysqli_real_escape_string($con, trim($request->password));
+
+   $sql = "SELECT * FROM `user` WHERE Email='$username' AND ModePasse='$password'";
+   $result=mysqli_query($con,$sql);
+   $row=mysqli_fetch_array($result);
    
-  
-  if($username=='Admin' && $password=='123456'){
+  if(mysqli_num_rows($result) == 1){
 
    echo json_encode(
             array(

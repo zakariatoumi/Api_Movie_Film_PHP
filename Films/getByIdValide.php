@@ -1,26 +1,27 @@
 <?php
+include('../connect.php');
+if (isset($_GET['id']) && isset($_GET['status'])) {
+    // get data from clients
+    $id=$_GET['id'];
+    $status=$_GET['status'];
+    // select from databasa by ID
+    $select=mysqli_query($con, "SELECT * FROM film WHERE id='$id'");
 
-require '../connect.php';
-
-$films = [];
-$sql = "SELECT * FROM film";
-
-if ($result = mysqli_query($con, $sql)) {
-    $cr = 0;
-    while ($row = mysqli_fetch_assoc($result)) {
-        $films[$cr]['id']    = $row['id'];
-        $films[$cr]['Valid'] = $row['valid'];
-        $cr++;
-    }
-
-    if ($films[$cr]['Valid'] == 1) {
-        $Update = "UPDATE film SET valid = 0 WHERE film.id=1";
-    } else {
-        $Update = "UPDATE film SET valid = 1 WHERE film.id=1";
+    while ($row=mysqli_fetch_object($select)) {
+        // $status_var=$row->valid;
+        // if($status_var=='0')
+        // {
+//     $status_state=1;
+        // }
+        // else
+        // {
+        // $status_state=0;
+        // }
+        $update=mysqli_query($con, "UPDATE film SET valid='$status' WHERE id='$id' ");
+        if ($update) {
+            http_response_code(201);
+        } else {
+            http_response_code(422);
+        }
     }
 }
-
-
-
-
-?>
