@@ -12,6 +12,7 @@ if($result = mysqli_query($con,$sql))
     $commantaire[$cr]['id']    = $row['id'];
     $commantaire[$cr]['text_commantaire'] = $row['Text_commantaire'];
     $commantaire[$cr]['Id_user'] = $row['id_user'];
+    $commantaire[$cr]['Valid'] = $row['valid'];
     $cr++;
   }
     

@@ -19,18 +19,21 @@ if(isset($postdata) && !empty($postdata))
   $token =  md5(session_id().microtime());
   $token = substr($token, -20);
 
-  
+  $select = mysqli_query($con, "SELECT * FROM user WHERE Email = '".$email."'");
+  if(mysqli_num_rows($select)) {
+    
+    echo json_encode(array ("error" => "Cette adresse email est déjà utilisé" ));
+    return;
+    
+  }else{
+      $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token, valid) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token','1')";
 
-$sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token')";
-
-if(mysqli_query($con,$sql))
-{
-  http_response_code(201);
-}
-else
-{
-  http_response_code(422);
-}
+      if (mysqli_query($con, $sql)) {
+          http_response_code(201);
+      } else {
+          http_response_code(422);
+      }
+  }
 }
 
 ?>

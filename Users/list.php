@@ -14,6 +14,7 @@ if($result = mysqli_query($con,$sql))
     $users[$cr]['prenom'] = $row['Prenom'];
     $users[$cr]['email'] = $row['Email'];
     $users[$cr]['password'] = $row['ModePasse'];
+    $users[$cr]['Valid'] = $row['valid'];
     $cr++;
   }
     

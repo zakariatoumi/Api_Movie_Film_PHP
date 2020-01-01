@@ -11,6 +11,7 @@ if($result = mysqli_query($con,$sql))
   {
     $categories[$cr]['id']    = $row['id'];
     $categories[$cr]['libelle'] = $row['Libelle'];
+    $categories[$cr]['Valid'] = $row['valid'];
     $cr++;
   }
     
