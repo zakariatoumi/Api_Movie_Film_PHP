@@ -23,7 +23,6 @@ if(isset($postdata) && !empty($postdata))
   if(mysqli_num_rows($select)) {
     
     echo json_encode(array ("error" => "Cette adresse email est déjà utilisé" ));
-    return;
     
   }else{
       $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token, valid) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token','1')";
