@@ -9,13 +9,13 @@ if(isset($postdata) && !empty($postdata))
 
   /*print_r($request);
   die();*/
-  
+
   // Sanitize.
   $nom = mysqli_real_escape_string($con, trim($request->nom));
   $prenom = mysqli_real_escape_string($con, trim($request->prenom));
   $email = mysqli_real_escape_string($con, $request->email);
   $password = mysqli_real_escape_string($con, $request->password);
-  
+
 
   $token =  md5(session_id().microtime());
   $token = substr($token, -20);
@@ -23,10 +23,19 @@ if(isset($postdata) && !empty($postdata))
 
   $select = mysqli_query($con, "SELECT * FROM user WHERE Email = '".$email."'");
 if(mysqli_num_rows($select)) {
-    exit('Cette adresse email est déjà utilisé');
+    echo json_encode(
+      array(
+        "error" => "Cette adresse email est déjà utilisé",
+    )
+  );
+  die();
 }else{
-    $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token')";
-
+    $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token, valid) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token','1')";
+    echo json_encode(
+      array(
+        "success" => "Bien ajouter",
+    )
+  );
     if (mysqli_query($con, $sql)) {
         http_response_code(201);
     } else {

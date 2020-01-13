@@ -14,16 +14,16 @@ $sql = "SELECT film.*,categorie.* FROM film INNER JOIN categorie ON categorie.id
 {
    $cr = 0;
 
-  $row = mysqli_fetch_assoc($result);
-  
-    $Details_films['id'] = $id;
-    $Details_films['titre_film'] = $row['Titre_film'];
-    $Details_films['pseudo'] = $row['Pseudo'];
-    $Details_films['lien_film'] = $row['Lien_film'];
-    $Details_films['description'] = $row['Description'];
-    $Details_films['Date'] = $row['date'];
-    $Details_films['libelle'] = $row['Libelle'];
-   // $cr++;
+   while ($row = mysqli_fetch_assoc($result)) {
+       $Details_films['id'] = $id;
+       $Details_films['titre_film'] = $row['Titre_film'];
+       $Details_films['pseudo'] = $row['Pseudo'];
+       $Details_films['lien_film'] = $row['Lien_film'];
+       $Details_films['description'] = $row['Description'];
+       $Details_films['Date'] = $row['date_film'];
+       $Details_films['libelle'] = $row['Libelle'];
+       // $cr++;
+   }
   
 // var_dump($Details_films);
 // die();    

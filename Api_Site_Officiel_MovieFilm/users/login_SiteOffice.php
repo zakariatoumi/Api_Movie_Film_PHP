@@ -1,6 +1,7 @@
 <?php
 require '../../connect.php';
 
+
  $postdata = file_get_contents("php://input");
 
 if (isset($postdata) && !empty($postdata)) {
@@ -137,16 +138,21 @@ if (isset($postdata) && !empty($postdata)) {
     $username = mysqli_real_escape_string($con, trim($request->username));
     $password = mysqli_real_escape_string($con, trim($request->password));
 
-    $sql = "SELECT * FROM `user` WHERE Email='$username' AND ModePasse='$password'";
+    $sql = "SELECT * FROM `user` WHERE Email='$username' AND ModePasse='$password' AND valid=1";
     $result=mysqli_query($con, $sql);
     $row=mysqli_fetch_array($result);
-   
+    
     if (mysqli_num_rows($result) == 1) {
+      session_start();
+      $_SESSION['id'] = $row['id'];
+       
         echo json_encode(
        array(
                 "message" => "Successful login.",
                 "token" => $row['Token'],
-                "nom" => $row['Nom']
+                "nom" => $row['Nom'],
+                "id" => $_SESSION['id']
+                // "id" => $_SESSION['id']
             )
    );
         http_response_code(200);
