@@ -8,7 +8,7 @@ require '../../connect.php';
 
 
   // Get by id.
-$sql = "SELECT commantaire.*, user.* FROM `commantaire` INNER JOIN user ON user.id=commantaire.id_user INNER JOIN film ON film.id=commantaire.id_film WHERE film.id=$id";
+$sql = "SELECT commantaire.*, user.* FROM `commantaire` INNER JOIN user ON user.id=commantaire.id_user INNER JOIN film ON film.id_film=commantaire.id_film WHERE film.id_film=$id";
 
  if($result = mysqli_query($con,$sql))
 {

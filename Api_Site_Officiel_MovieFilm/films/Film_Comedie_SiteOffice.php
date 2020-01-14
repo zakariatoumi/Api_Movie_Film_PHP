@@ -2,14 +2,14 @@
 require '../../connect.php';
 error_reporting(E_ERROR);
 $films = [];
-$sql = "SELECT * FROM `film` WHERE id_categorie=2 ORDER BY id DESC LIMIT 6";
+$sql = "SELECT * FROM `film` WHERE id_categorie=2 ORDER BY id_film DESC LIMIT 6";
 
 if($result = mysqli_query($con,$sql))
 {
   $cr = 0;
   while($row = mysqli_fetch_assoc($result))
   {
-    $films[$cr]['id']    = $row['id'];
+    $films[$cr]['id']    = $row['id_film'];
     $films[$cr]['titre_film'] = $row['Titre_film'];
     $films[$cr]['pseudo'] = $row['Pseudo'];
     $films[$cr]['lien_film'] = $row['Lien_film'];

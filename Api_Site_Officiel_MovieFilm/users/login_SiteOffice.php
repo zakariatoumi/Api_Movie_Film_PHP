@@ -145,14 +145,12 @@ if (isset($postdata) && !empty($postdata)) {
     if (mysqli_num_rows($result) == 1) {
       session_start();
       $_SESSION['id'] = $row['id'];
-       
         echo json_encode(
        array(
                 "message" => "Successful login.",
                 "token" => $row['Token'],
                 "nom" => $row['Nom'],
                 "id" => $_SESSION['id']
-                // "id" => $_SESSION['id']
             )
    );
         http_response_code(200);
