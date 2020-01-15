@@ -11,7 +11,7 @@ if(isset($postdata) && !empty($postdata))
   $libelle = mysqli_real_escape_string($con, trim($request->libelle));
 
 
-$sql = "INSERT INTO `categorie`(Libelle, valid, date) VALUES ('$libelle','1',NOW())";
+$sql = "INSERT INTO `categorie`(Libelle, valid, date_categorie) VALUES ('$libelle','1',NOW())";
 
 if(mysqli_query($con,$sql))
 {

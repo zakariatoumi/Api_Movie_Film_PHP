@@ -5,7 +5,7 @@ require '../connect.php';
 $id = $_GET['id']; 
 
   // Get by id.
-$sql = "SELECT * FROM `categorie` WHERE categorie.id ='$id' LIMIT 1";
+$sql = "SELECT * FROM `categorie` WHERE categorie.id_categorie ='$id' LIMIT 1";
 
  if($result = mysqli_query($con,$sql))
 {

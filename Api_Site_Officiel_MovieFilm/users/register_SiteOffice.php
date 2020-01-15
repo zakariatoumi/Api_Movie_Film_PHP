@@ -30,7 +30,7 @@ if(mysqli_num_rows($select)) {
   );
   die();
 }else{
-    $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date, Token, valid) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token','1')";
+    $sql = "INSERT INTO `user`(Nom, Prenom, Email, ModePasse, date_user, Token, valid) VALUES ('$nom','$prenom','$email','$password',NOW(),'$token','1')";
     echo json_encode(
       array(
         "success" => "Bien ajouter",

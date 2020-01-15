@@ -9,7 +9,7 @@ if($result = mysqli_query($con,$sql))
   $cr = 0;
   while($row = mysqli_fetch_assoc($result))
   {
-    $films[$cr]['id']    = $row['id'];
+    $films[$cr]['id']    = $row['id_film'];
     $films[$cr]['titre_film'] = $row['Titre_film'];
     $films[$cr]['pseudo'] = $row['Pseudo'];
     $films[$cr]['lien_film'] = $row['Lien_film'];

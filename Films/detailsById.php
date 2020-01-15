@@ -8,7 +8,7 @@ require '../connect.php';
 
 
   // Get by id.
-$sql = "SELECT film.*,categorie.* FROM film INNER JOIN categorie ON categorie.id=film.id_categorie WHERE film.id=$id";
+$sql = "SELECT film.*,categorie.* FROM film INNER JOIN categorie ON categorie.id_categorie=film.id_categorie WHERE film.id_film=$id";
 
  if($result = mysqli_query($con,$sql))
 {

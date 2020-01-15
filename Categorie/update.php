@@ -18,7 +18,7 @@ if(isset($postdata) && !empty($postdata))
   $libelle = mysqli_real_escape_string($con, trim($request->libelle));
   
   // Update.
-   $sql = "UPDATE `categorie` SET `Libelle`='$libelle' WHERE categorie.id = '$id'";
+   $sql = "UPDATE `categorie` SET `Libelle`='$libelle' WHERE categorie.id_categorie = '$id'";
 
   if(mysqli_query($con, $sql))
   {

@@ -26,7 +26,7 @@ if(isset($postdata) && !empty($postdata))
   $lien = $lienConst . $lienG;
 
 
-$sql = "INSERT INTO `film`(Titre_film, Pseudo, Lien_film,  Description, id_categorie, valid, date) VALUES ('$titreFilm','$pseudoFilm','$lien','$descriptionFilm','$categorie','1',NOW())";
+$sql = "INSERT INTO `film`(Titre_film, Pseudo, Lien_film,  Description, id_categorie, valid, date_film) VALUES ('$titreFilm','$pseudoFilm','$lien','$descriptionFilm','$categorie','1',NOW())";
 //$sql = "SELECT * FROM `user` WHERE 1";
 // var_dump(mysqli_query($con,$sql));
 if(mysqli_query($con,$sql))

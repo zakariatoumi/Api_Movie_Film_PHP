@@ -3,7 +3,7 @@
 require '../connect.php';
 $id=$_GET['id'];
 
-$sql = "DELETE FROM `categorie` WHERE `id` ='{$id}' LIMIT 1";
+$sql = "DELETE FROM `categorie` WHERE `id_categorie` ='{$id}' LIMIT 1";
 
 if(mysqli_query($con, $sql))
 {

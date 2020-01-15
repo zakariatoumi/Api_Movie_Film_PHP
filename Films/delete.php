@@ -3,7 +3,7 @@
 require '../connect.php';
 $id=$_GET['id'];
 
-$sql = "DELETE FROM `film` WHERE `id` ='{$id}' LIMIT 1";
+$sql = "DELETE FROM `film` WHERE `id_film` ='{$id}' LIMIT 1";
 
 if(mysqli_query($con, $sql))
 {

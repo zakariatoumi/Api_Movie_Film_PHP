@@ -5,11 +5,11 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     $id=$_GET['id'];
     $status=$_GET['status'];
     // select from databasa by ID
-    $select=mysqli_query($con, "SELECT * FROM categorie WHERE id='$id'");
+    $select=mysqli_query($con, "SELECT * FROM categorie WHERE id_categorie='$id'");
 
     while ($row=mysqli_fetch_object($select)) {
        
-        $update=mysqli_query($con, "UPDATE categorie SET valid='$status' WHERE id='$id' ");
+        $update=mysqli_query($con, "UPDATE categorie SET valid='$status' WHERE id_categorie='$id' ");
         if ($update) {
             http_response_code(201);
         } else {

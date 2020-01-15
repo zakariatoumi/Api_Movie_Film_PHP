@@ -33,7 +33,7 @@ if(isset($postdata) && !empty($postdata))
   }
   
 
-   $sql = "UPDATE `film` SET `Titre_film`='$titre_film',`Pseudo`='$pseudo',`Lien_film`='$lien',`Description`='$description',`id_categorie`='$id_categorie' WHERE film.id = '$id'";
+   $sql = "UPDATE `film` SET `Titre_film`='$titre_film',`Pseudo`='$pseudo',`Lien_film`='$lien',`Description`='$description',`id_categorie`='$id_categorie' WHERE film.id_film = '$id'";
 
   if(mysqli_query($con, $sql))
   {

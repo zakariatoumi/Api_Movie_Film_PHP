@@ -9,7 +9,7 @@ if($result = mysqli_query($con,$sql))
   $cr = 0;
   while($row = mysqli_fetch_assoc($result))
   {
-    $categories[$cr]['id']    = $row['id'];
+    $categories[$cr]['id']    = $row['id_categorie'];
     $categories[$cr]['libelle'] = $row['Libelle'];
     $categories[$cr]['Valid'] = $row['valid'];
     $cr++;
